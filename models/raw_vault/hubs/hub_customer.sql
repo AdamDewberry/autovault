@@ -1,13 +1,15 @@
 {{ config(
   materialized='incremental',
   schema = "HUBS",
-  alias = "PRODUCT"
+  alias = "CUSTOMER"
   ) }}
 
-{%- set source_model = ["stg_products_v1",
-                        "stg_transactions_v1"] -%}
-{%- set src_pk = "PRODUCT_HK" -%}
-{%- set src_nk = ["PRODUCT_ID"] -%}
+{%- set source_model = ["stg_customer_visits_v0_1_0",
+                        "stg_customers_v0_1_0",
+                        "stg_customers_v0_1_1",
+                        "stg_transactions_v0_1_0"] -%}
+{%- set src_pk = "CUSTOMER_HK" -%}
+{%- set src_nk = ["CUSTOMER_ID"] -%}
 {%- set src_ldts = "LOAD_DATETIME" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

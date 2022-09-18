@@ -1,0 +1,65 @@
+{
+  "unit_of_work": "CUST_CHECKOUT",
+  "source_name": "TRANSACTIONS",
+  "version": "0_1_0",
+  "source_system": "STORE-TILLS",
+  "destination_database": "AUTOVAULT",
+  "destination_schema": "PUBLIC",
+  "business_topics": {
+    "CUSTOMER": {
+      "business_keys": {
+        "CUSTOMER_ID": {
+          "description": "Customer IDs are concatinations of their region code and registration number",
+          "type": "STRING",
+          "tests": {
+            "unique": true
+          }
+        }
+      }
+    },
+    "PRODUCT": {
+      "business_keys": {
+        "PRODUCT_ID": {
+          "description": "Each product has a 12 digit UIID",
+          "type": "STRING",
+          "tests": {
+            "not_null": true
+          }
+        }
+      },
+      "business_attributes": [
+        {
+          "business_definition": "PRODUCTS",
+          "payload": {
+            "PRICE": {
+              "type": "NUMBER",
+              "tests": {
+                "unique": true,
+                "not_null": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TRANSACTION": {
+      "business_keys": {
+        "DATE_OF_SESSION": {
+          "description": "The datetime at which the order was made",
+          "type": "TIMESTAMP_TZ(9)",
+          "tests": {
+            "unique": true,
+            "not_null": true
+          }
+        },
+        "CUSTOMER_ID": {
+          "description": "444444",
+          "type": "STRING",
+          "tests": {
+            "not_null": true
+          }
+        }
+      }
+    }
+  }
+}

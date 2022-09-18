@@ -36,6 +36,10 @@ This will prompt you for a password to encrypt the private key. Each time you co
 Create your public key using the private key with the following command:
 
     openssl rsa -in  ~/.ssh/snowsql/rsa_key.p8 -pubout -out ~/.ssh/snowsql/rsa_key.pub
+    
+Attach the public key to the user by executing the below statement in Snowflake UI:
+    
+    alter user <firstname.surname@infinityworks.com> set rsa_public_key='<THE_CONTENT_OF_YOUR_RSA_KEY.PUB>';
 
 #### Testing the connection
 To test your connection to Snowflake and that dbt can deploy tables and views, you may want to use the snowsql CLI:
@@ -298,6 +302,17 @@ To ingest sample data in the snowflake public schema, run command:
 To generate dbt raw vault model files ensure you have create the metadata file `./source_metadata`; metadata files for example source data have been provided. Run the command:
 
     python3 ./generate_raw_vault/app/main.py
+
+Note: If you get a ModuleNotFoundError then the folder directory may need to be added to your PYTHONPATH environment variable with the appropriate command below. Alternatively, you can update this in your .zshrc file.
+
+**For UNIX (Linux, OSX, ...)**
+```python
+export PYTHONPATH=“${PYTHONPATH}:/path/to/your/project/”
+```
+**For Windows**
+```python
+set PYTHONPATH=%PYTHONPATH%;C:\path\to\your\project\
+```
 
 To deploy the model in snowflake run command:
 

@@ -1,17 +1,17 @@
 {{ config(
   materialized='incremental',
   schema = "SATS",
-  alias = "$sat_name"
+  alias = "store_tills_products_v0_1_0"
   ) }}
 
 {%- set yaml_metadata -%}
-$source_model
-$src_pk
+source_model: "stg_transactions_v0_1_0"
+src_pk: "PRODUCT_HK"
 src_hashdiff:
-  $src_hashdiff_column
+  source_column: "PRODUCTS_HASHDIFF"
   alias: "HASHDIFF"
 src_payload:
-  $payload
+  - "PRICE"
 src_eff: "EFFECTIVE_FROM"
 src_ldts: "LOAD_DATETIME"
 src_source: "RECORD_SOURCE"

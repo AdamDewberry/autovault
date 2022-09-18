@@ -5,7 +5,7 @@
 
 {%- set yaml_metadata -%}
 source_model:
-  AUTOVAULT_PUBLIC: "CUSTOMERS_V1"
+  AUTOVAULT_PUBLIC: "CUSTOMERS_V0_1_0"
 derived_columns:
   EFFECTIVE_FROM: "LOAD_DATETIME"
   START_DATE: "LOAD_DATETIME"
@@ -15,10 +15,10 @@ hashed_columns:
   CUSTOMER_HK:
     - "CUSTOMER_ID"
 
-  CUSTOMER_VISITS_HASHDIFF:
+  CUSTOMER_DETAILS_HASHDIFF:
     is_hashdiff: true
     columns:
-      - "AVG_MONTHLY_VISITS"
+      - "AGE"
 
 {%- endset -%}
 

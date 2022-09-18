@@ -1,17 +1,17 @@
 {{ config(
   materialized='incremental',
   schema = "SATS",
-  alias = "$sat_name"
+  alias = "crm_system_customer_details_v0_1_1"
   ) }}
 
 {%- set yaml_metadata -%}
-$source_model
-$src_pk
+source_model: "stg_customers_v0_1_1"
+src_pk: "CUSTOMER_HK"
 src_hashdiff:
-  $src_hashdiff_column
+  source_column: "CUSTOMER_DETAILS_HASHDIFF"
   alias: "HASHDIFF"
 src_payload:
-  $payload
+  - "AGE"
 src_eff: "EFFECTIVE_FROM"
 src_ldts: "LOAD_DATETIME"
 src_source: "RECORD_SOURCE"
