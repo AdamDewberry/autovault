@@ -14,8 +14,8 @@
   "access_requests": "Contact the Data squad for Snowflake and table access",
   "quality": "This file often has null primary keys",
   "access_roles": [
-    "data_analyst",
-    "data_scientist"
+    "DATA_ANALYST",
+    "DATA_SCIENTIST"
   ],
   "maintained_by": "Data squad",
   "business_topics": {
@@ -23,7 +23,7 @@
       "ignore_persisting_source_to_hub_model": false,
       "business_keys": {
         "CUSTOMER_ID": {
-          "description": "This is the driving key, a unique identifier to represent a customer.",
+          "description": "A unique identifier to represent a customer.",
           "driving_key": true,
           "type": "STRING",
           "tests": {
